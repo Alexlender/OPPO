@@ -5,8 +5,15 @@ double my_pow(double x, int power) {
 		fl = true;
 	}
 	double result = 1;
-	for (int i = 0; i < power; i++)
-		result *= result;
-
-	return fl ? 1 / result : result;
+    while (power > 0) {
+        if (power % 2 == 0) {
+            power /= 2;
+            x *= x;
+        }
+        else {
+            power--;
+            result *= x;
+        }
+    }
+    return fl ? 1 / result : result;
 }
